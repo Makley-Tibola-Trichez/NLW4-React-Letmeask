@@ -27,14 +27,14 @@ export default function AdminRoom() {
 		await database.ref(`rooms/${roomId}`).update({
 			endedAt: new Date(),
 		});
+
+		history.push("/");
 	}
 
 	async function handleDeleteQuestion(questionId: string) {
 		if (window.confirm("Tem certeza que você deseja excluir esta pergunta ?")) {
 			await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
 		}
-
-		history.push("/");
 	}
 
 	async function handleCheckQuestionAsAnswered(questionId: string) {
